@@ -9,18 +9,25 @@ def index(request):
     
     if(request.method == 'POST'):
         
-        city = request.POST.get('searchLocation')
+        city = request.POST.get('searchLocation').title()
 
         city_weather = requests.get(url.format(city)).json()
+        try:
+            weather = {
+                'city': city,
+                'temperature': str(city_weather['main']['temp'])+' ° C',
+                'description': city_weather['weather'][0]['description'],
+                'icon': city_weather['weather'][0]['icon'],
+            }
+            context = {'weather': weather}
+        except KeyError:
+            print("invalid city")
+            error = {
+                'message': 'Not a valid city'
+            }
+            context = {'error' : error}
 
-        weather = {
-            'city': city,
-            'temperature': str(city_weather['main']['temp'])+' ° C',
-            'description': city_weather['weather'][0]['description'],
-            'icon': city_weather['weather'][0]['icon']
-        }
-
-        context = {'weather': weather}
+        
 
     return render(request, 'weather/index.html', context) # returns the index.html template
 
