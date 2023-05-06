@@ -10,7 +10,8 @@
     <div class="main-container">
       <div class="navbar"></div>
       <div class="main-app">
-        <form action="">
+        <form action="" method="post">
+            {% csrf_token % %}
             <label class="form-label">Search for location:</label>
             <input type="text" name="searchLocation">
             <button type="submit">Search</button>
@@ -20,7 +21,7 @@
             <p>
               <span class="title">{{ weather.city }}</span>
               <br>
-              <span class = "subtitle">{{ weather.temperature }} ° C </span>
+              <span class = "subtitle">{{ weather.temperature }}</span>
               <br> {{ weather.description }}
             </p>
         </div>
