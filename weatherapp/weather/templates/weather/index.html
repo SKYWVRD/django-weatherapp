@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <div class="navbar"></div>
-      <div class="main-app">
-        <form action="" method="post">
+{% extends 'base.html' %}
+{% block content %}
+        <form action="" method="post" class="align-self-center">
             {% csrf_token % %}
             <label class="form-label">Search for location:</label>
             <input type="text" name="searchLocation">
             <button type="submit">Search</button>
         </form>
-        <div class='current-location-content'>
-          <div class='content'>
+        <div class='current-location-content align-self-center'>
+          <div>
             <p>
               <span class="title">{{ weather.city }}</span>
               <br>
@@ -27,7 +17,4 @@
             </p>
         </div>
       </div>
-      <div class="footer"></div>
-    </div>
-  </body>
-</html>
+{% endblock content %}
