@@ -2,23 +2,24 @@
 {% block content %}
 <div id='main-container' class='d-flex flex-column current-location-content flex-fill'>
   <div id="today" class="flex-column flex-grow-1 h-80">
-    <div class="title-container d-flex">
+    <div class="title-container d-flex align-self-center">
       <div class="fs-1 p-2">City: </div>
       <div class="title fs-1 p-2">{{ weather.city }}</div>
     </div>
-    <div class="current-info-container d-flex flex-wrap">
-      <div class="flex-grow-1" style="max-width: 20vw;">
-        <img alt="weather-picture">
+    <div class="current-info-container d-flex flex-wrap justify-content-center">
+      <div class="flex-grow-1 align-self-center" style="max-width: 20vw;" >
+        {% load static %}
+        <img src="{% static 'images/cloudy.png' %}"alt="weather-picture" style="max-width: 100%;">
       </div>
       <div class="weather-info flex-grow-1">
         <div class="fs-2 p-4">Temperature: {{ weather.temperature }}</div>
-        <div class="fs-2 p-4">Conditions: {{ weather.description }}</div>
+        <div class="fs-2 p-4">Condition: {{ weather.description }}</div>
       </div>
     </div>
     <div> {{ error.message }}</div>
   </div>
   <div id="seven-day" class="flex-grow-1" style="max-height: 150px">
-    <h1>7 Day Forecast</h1>
+    <h1>5 Day Forecast</h1>
   </div>
 </div>
 
