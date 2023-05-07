@@ -1,11 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="" method="post" class="d-flex align-self-center form-floating">
-  {% csrf_token % %}
-  <input type="text" name="searchLocation" class="form-control" id="floatingInputValue" placeholder="Cape Town">
-  <label for="floatingInputValue">Input with value</label>
-  <button type="submit" class="btn btn-primary">Search</button>
-</form>
 <div id='main-container' class='d-flex flex-column current-location-content flex-fill'>
   <div id="today" class="flex-column flex-grow-1 h-80">
     <div class="title-container d-flex">

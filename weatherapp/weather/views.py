@@ -8,29 +8,36 @@ def index(request):
     context = None
     
     if(request.method == 'POST'):
-        
         city = request.POST.get('searchLocation').title()
+    else:
+        city = 'Cape Town'
+    
+    city_weather = requests.get(url.format(city)).json()
 
-        city_weather = requests.get(url.format(city)).json()
-        try:
-            weather = {
-                'city': city,
-                'temperature': str(city_weather['main']['temp'])+' ° C',
-                'description': city_weather['weather'][0]['description'],
-                'icon': city_weather['weather'][0]['icon'],
-            }
-            context = {'weather': weather}
-        except KeyError:
-            print("invalid city")
-            error = {
-                'message': 'Not a valid city'
-            }
-            context = {'error' : error}
+    try:
+        weather = {
+            'city': city,
+            'temperature': str(city_weather['main']['temp'])+' ° C',
+            'description': city_weather['weather'][0]['description'],
+            'icon': city_weather['weather'][0]['icon'],
+        }
+        context = {'weather': weather}
+    except KeyError:
+        print("invalid city")
+        error = {
+            'message': 'Not a valid city'
+        }
+        weather = {
+            'city': 'Not A Valid City',
+            'temperature': 'N/A',
+            'description': 'N/A',
+            'icon': 'N/A',
+        }
 
-        
+        context = {'error' : error, 'weather': weather}
 
     return render(request, 'weather/index.html', context) # returns the index.html template
 
 
 def about(request):
-    return HttpResponse('<h1>Welcome to the about page<h1>')
+    return render(request, 'weather/about.html') # returns the index.html template
