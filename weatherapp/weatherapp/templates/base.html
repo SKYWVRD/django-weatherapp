@@ -31,7 +31,7 @@
                             <a class="nav-link" href="#">Sign In</a>
                         </li>
                         <li>
-                            <form action="" method="post" class="d-flex align-self-center form-floating ms-3">
+                            <form action="{% url 'home' %}" method="post" class="d-flex align-self-center form-floating ms-3">
                                 {% csrf_token % %}
                                 <input type="text" name="searchLocation" class="form-control" id="floatingInputValue"
                                     placeholder="Cape Town">
