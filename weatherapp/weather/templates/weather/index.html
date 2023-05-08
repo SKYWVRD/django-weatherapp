@@ -8,7 +8,7 @@
     <div class="title fs-1 p-2">{{ weather.city }}</div>
   </div>
   <div class="d-flex justify-content-center flex-wrap">
-    <div class="" style="max-width: 80vw;">
+    <div class="" style="max-width: 80vw; object-fit: contain;">
       {% if 'cloud' in weather.description %}
       <img class="weather-image" src="{% static 'images/cloudy.png' %}" alt="weather-picture"">
       {% endif %}
