@@ -1,0 +1,8 @@
+#today {
+    background-size: auto;
+    background-repeat: no-repeat; 
+}
+
+.weather-image {
+    max-width: 100%;
+}
